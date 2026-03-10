@@ -11,10 +11,21 @@ function Add() {
     list.append(listitem);
     input.value = "";
     input.focus();
+        savetasks();
+
+}
+window.onload = function() {
+    if (localStorage.getItem("tasks")) {
+        list.innerHTML = localStorage.getItem("tasks");
+    }
+}
+function savetasks(){
+    localStorage.setItem("tasks", list.innerHTML);
 }
 
 function deleteItem(event) {
     event.target.parentElement.remove();
+    savetasks();
 }
 
 function handleKeypress(event) {
