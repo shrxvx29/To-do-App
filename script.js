@@ -1,6 +1,12 @@
 var input = document.getElementById("input");
 var list = document.getElementById("list");
 
+window.onload = function() {
+    if (localStorage.getItem("tasks")) {
+        list.innerHTML = localStorage.getItem("tasks");
+    }
+}
+
 function Add() {
     if (input.value === "") {
         alert("Please add a task!");
@@ -14,11 +20,7 @@ function Add() {
         savetasks();
 
 }
-window.onload = function() {
-    if (localStorage.getItem("tasks")) {
-        list.innerHTML = localStorage.getItem("tasks");
-    }
-}
+
 function savetasks(){
     localStorage.setItem("tasks", list.innerHTML);
 }
